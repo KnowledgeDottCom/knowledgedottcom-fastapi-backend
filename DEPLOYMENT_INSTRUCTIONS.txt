@@ -1,0 +1,32 @@
+KNOWLEDGEDOTTCOM BACKEND DEPLOYMENT
+===================================
+
+1. UPLOAD TO HOSTINGER:
+   - Upload ALL files to: public_html/
+   - Or upload knowledgedottcom-deploy.zip and extract
+
+2. HOSTINGER PYTHON SETUP:
+   - Go to hPanel → Advanced → Python App
+   - Create Python App:
+     * Python version: 3.9
+     * App directory: /public_html
+     * App startup file: passenger_wsgi.py
+   - Click CREATE
+
+3. ENVIRONMENT VARIABLES (in Hostinger dashboard):
+   MONGO_URL=your_mongodb_atlas_connection
+   DB_NAME=knowledgedottcom_production
+   JWT_SECRET=your-strong-secret-key
+   CORS_ORIGINS=https://knowledgedottcom.co.uk
+
+4. MONGODB SETUP:
+   - Create free account at mongodb.com/atlas
+   - Get connection string
+   - Update MONGO_URL in Hostinger
+
+5. TEST:
+   - Visit: https://yourdomain.com/api/health
+   - Should see: {"status":"healthy","database":"connected"}
+
+6. CONNECT FRONTEND:
+   In your React app, use: https://yourdomain.com/api
